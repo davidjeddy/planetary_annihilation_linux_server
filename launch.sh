@@ -9,11 +9,13 @@
 # logic
 
 if [ ! -f ./NodePAMaster.zip]; then
-    wget http://nanodesu.info/stuff/pa/mods/NodePAMaster.zip
+    wget http://nanodesu.info/stuff/pa/mods/NodePAMaster.zip --no-check-certifcate
     unzip NodePAMaster.zip
 fi
 
 go run papatcher.go
+
+cp ./NodePAMaster/src/conf.json ./NodePAMaster/src/conf.json.orgn
 
 vi ./NodePAMaster/src/conf.json
 
