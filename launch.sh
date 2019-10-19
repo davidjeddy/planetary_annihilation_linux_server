@@ -13,14 +13,15 @@ if [ ! -f ./NodePAMaster.zip]; then
     unzip NodePAMaster.zip
 fi
 
-go run papatcher.go
-
 cp ./NodePAMaster/src/conf.json ./NodePAMaster/src/conf.json.orgn
 
 vi ./NodePAMaster/src/conf.json
 
 # The first two lines of the file should be modified to use the correct path for your server and version.txt files.
 # Change server to “./.local/Uber\ Entertainment/Planetary\ Annihilation/stable/server”
+
+PA_SERVER=“./.local/Uber\ Entertainment/Planetary\ Annihilation/stable/server”
+sed "g/\"server\"/${PA_SERVER}/s" ./NodePAMaster/src/conf.json
 # Change serverversion to “./.local/Uber Entertainment/Planetary Annihilation/stable/version.txt”
 # Change the serverip to your public facing IP
 # Change the serverport to 20545
@@ -29,6 +30,7 @@ vi ./NodePAMaster/src/conf.json
 Now update the server parameters in serverparams.
 
 change the name
+
 add the following
 "--max-players", "15", "--max-spectators", "5"
 The final serverparams will look something like:
