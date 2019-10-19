@@ -40,4 +40,4 @@ byobu
 
 nodejs ./NodePAMaster/src/control.js
 
-Ensure only ports 22 (SSH) and 20545 (PA) are accessible to the world.
+echo "For security ensure only ports 22 (SSH) and 20545 (PA) are accessible to the world."

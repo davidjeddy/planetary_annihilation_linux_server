@@ -3,7 +3,7 @@
 ## Sources
 
 - [https://dev.exodusesports.com/guides/planetary-annihilation-dedicated-server-setup/](https://dev.exodusesports.com/guides/planetary-annihilation-dedicated-server-setup/)
-
+- [https://www.hiroom2.com/2018/07/01/ubuntu-1804-vbox-guest-additions-en/](https://www.hiroom2.com/2018/07/01/ubuntu-1804-vbox-guest-additions-en/)
 
 ## Original Text
 
