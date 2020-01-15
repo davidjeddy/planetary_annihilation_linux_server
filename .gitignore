@@ -1,2 +1,3 @@
-NodePAMaster.zip
-NodePAMaster/*
+*.go
+*.zip
+/NodePAMaster
