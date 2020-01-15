@@ -4,23 +4,43 @@
 
 # logic
 
-sudo apt-get update -y
-sudo apt-get install -y \
+echo -n "Update and Install system deps..."
+apt-get update -y
+apt-get install -y \
     byobu \
     golang \
+    libcurl4-gnutls-dev \
     libgl1-mesa-glx \
-    nodejs \
-    unzip \
-    libsdl2-mixer-2.0-0 \
+    libsdl2-2.0-0 \
     libsdl2-image-2.0-0 \
-    libsdl2-2.0-0
+    libsdl2-mixer-2.0-0 \
+    nodejs \
+    vim \
+    wget \
+    unzip
 
 if [ ! -f papatcher.go ]; then
+    echo -n "Downloading PA patcher..."
     # wget https://bitbucket.org/papatcher/papatcher/raw/a7b8b4febb491d6fc6c45155b238fd42ee34fcc8/papatcher.go
     wget https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go
+    chmod +x papatcher.go
+    echo -n "Running PA patcher..."
+    go run papatcher.go -stream=stable
 fi
 
-chmod +x papatcher.go
+if [ ! -f ./NodePAMaster.zip]; then
+    echo -n "Downloading Node server..."
+    wget http://nanodesu.info/stuff/pa/mods/NodePAMaster.zip -O NodePAMaster.zip
+    unzip NodePAMaster.zip
+fi
 
-go run papatcher.go -stream=”stable”
-# go run papatcher.go --stream=modern-pte --update-only ${PA_USERNAME} ${PA_PASSWORD}
+echo -n "Copying configurations..."
+echo -n "- lobby.js..."
+cp /root/.local/Uber\ Entertainment/Planetary\ Annihilation/stable/media/server-script/states/lobby.js /root/.local/Uber\ Entertainment/Planetary\ Annihilation/stable/media/server-script/states/lobby.js.bckp
+cp ./confs/lobby.js /root/.local/Uber\ Entertainment/Planetary\ Annihilation/stable/media/server-script/states/lobby.js
+echo -n "- conf.json..."
+cp ./NodePAMaster/src/conf.json ./NodePAMaster/src/conf.json.bckp
+cp ./confs/conf.json ./NodePAMaster/src/conf.json 
+
+echo 'Starting PA server...'
+nodejs ./NodePAMaster/src/control.js

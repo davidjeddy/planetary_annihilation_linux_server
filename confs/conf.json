@@ -1,0 +1,22 @@
+{
+    "server": "/root/.local/Uber Entertainment/Planetary Annihilation/stable/server",
+    "serverversion": "/root/.local/Uber Entertainment/Planetary Annihilation/stable/version.txt",
+    "serverparams": [
+        "--headless",
+        "--game-mode",
+        "PAExpansion1:Config",
+        "--allow-lan",
+        "--server-name",
+        "MyServerName",
+        "--max-players",
+        "15",
+        "--max-spectators",
+        "5"
+    ],
+    "pastats": "pastats.com",
+    "pastatsport": 80,
+    "listonpastats": true,
+    "serverip": "127.0.0.1",
+    "serverport": "20545",
+    "shownregion": "pastats.com"
+}
